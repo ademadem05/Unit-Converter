@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+
+    <nav>
+        <a href="/length">Length</a> |
+        <a href="/weight">Weight</a> |
+        <a href="/temperature">Temperature</a>
+    </nav>
+
+    <h2>Length</h2>
+
+    <form method="post">
+        <label>Value:</label>
+        <input type="text" name="value" required>
+
+        <label>From:</label>
+        <select name="from_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}">{{ unit }}</option>
+            {% endfor %}
+        </select>
+
+        <label>To:</label>
+        <select name="to_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}">{{ unit }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+</body>
+</html>
